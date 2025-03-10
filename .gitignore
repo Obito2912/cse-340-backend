@@ -12,8 +12,12 @@ node_modules
 # will be manually created by you or dynamically # created on the hosting server
 .env
 
+# ignore lock yaml file
+pnpm-lock.yaml
+
 # .DS_Store is only for Mac users
 **/.DS_Store
 
-# File is to provide an overview of how the files and folders work
+# No need for this since its just an overview of how to use the files and folders
+# in the project
 README.md

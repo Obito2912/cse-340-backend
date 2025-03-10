@@ -2,5 +2,207 @@
 *,
 *:before,
 *:after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
+
+/********************* Header *********************/
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.siteName a,
+#tools a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  color: #004177;
+}
+
+.siteName a {
+  font-size: 2rem;
+}
+
+@media screen and (min-width: 64rem) {
+  #top-header {
+    margin-bottom: 20px;
+  }
+}
+
+/********************* Navigation *********************/
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #004177;
+  min-height: 30px;
+}
+
+nav ul li {
+  color: #fff;
+}
+
+@media screen and (min-width: 64rem) {}
+
+/********************* Main *********************/
+h1,
+h2 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+  font-family: monospace;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.hero {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.hero picture img {
+  display: block;
+  margin: 0 auto;
+  width: 250px;
+}
+
+.hero__content {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  color: #004177;
+  background-color: #ffffff73;
+}
+
+.hero__content img {
+  width: 100px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+section ul {
+  padding-left: 20px;
+}
+
+section li {
+  margin-bottom: 10px;
+}
+
+.reviews {
+  margin-bottom: 30px;
+  grid-area: Reviews;
+}
+
+.upgrades {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 20px;
+  column-gap: 10px;
+  margin-bottom: 30px;
+  grid-area: Upgrades;
+}
+
+.upgrades figure {
+  background-color: #004177;
+  display: grid;
+  grid-template-rows: 2fr .5fr;
+  text-align: center;
+}
+
+.upgrades img {
+  display: block;
+  margin: auto;
+
+}
+
+.upgrades figcaption {
+  background-color: #fff;
+  height: auto;
+  margin-top: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media screen and (min-width: 64rem) {
+  html {
+    background-image: url(/images/site/small_check.jpg);
+  }
+
+  body {
+    padding: 20px 10px 10px;
+    width: 60%;
+    background-color: #fff;
+    margin: 10px auto;
+    border: 5px solid #c26262;
+    border-radius: 5px;
+  }
+
+  #tools {
+    font-size: 1.1rem;
+  }
+
+  nav ul {
+    min-height: 45px;
+  }
+
+  nav ul li {
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .hero picture img {
+    width: 800px;
+  }
+
+  .hero__content {
+    font-size: 1.8rem;
+    top: 50px;
+    left: 40px;
+    background-color: #bbbbbb60;
+    padding: 10px;
+  }
+
+  .hero__content img {
+    cursor: pointer;
+    margin-top: 20px;
+    width: 180px;
+  }
+
+  .sections {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 
+      "upgrades Reviews";
+    gap: 15px;
+  }
+
+  .sections h2 {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+  }
+
+  .reviews ul li {
+    font-size: 1.5rem;
+  }
+
+  .upgrades figcaption {
+    font-size: 1.4rem;
+  }
+}
+
+/********************* Footer *********************/

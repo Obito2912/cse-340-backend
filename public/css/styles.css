@@ -41,11 +41,15 @@ nav ul {
   min-height: 30px;
 }
 
-nav ul li {
+nav ul li a {
   color: #fff;
 }
 
-@media screen and (min-width: 64rem) {}
+@media screen and (min-width: 64rem) {
+  nav ul li a:active {
+    color: #c26262;
+  }
+}
 
 /********************* Main *********************/
 h1,

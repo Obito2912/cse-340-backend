@@ -29,7 +29,7 @@ invCont.buildByInvId = async function(req, res, next) {
     let nav = await utilities.getNav()
 
     res.render('./inventory/item-detail-view', {
-      title: `${itemData.inv_Make} ${itemData.inv_Model}`,
+      title: `${itemData.inv_make} ${itemData.inv_model}`,
       item: itemData,
       details,
       nav

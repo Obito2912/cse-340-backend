@@ -65,6 +65,7 @@ body {
 h1 {
   font-size: 1.2rem;
   margin: 1rem 0;
+  text-align: center;
 }
 
 .hero {
@@ -89,6 +90,69 @@ h1 {
 .hero__content img {
   width: 100px;
   -webkit-tap-highlight-color: transparent;
+}
+
+#inv-display {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+#inv-display li {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #323232;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px #004177;
+  max-width: 320px;
+  margin-inline: auto;
+  list-style: none;
+}
+
+#inv-display li h2,
+#inv-display li span {
+  font-size: 1.4rem;
+}
+
+.vehicle-detail {
+  width: 90%;
+  margin-inline: auto;
+  padding: 10px;
+  margin: 20px auto 30px;
+  border: 1px solid #323232;
+  box-shadow: inset 0 0 5px #004177;
+  border-radius: 5px;
+}
+
+.vehicle-detail img {
+  margin-bottom: 10px;
+}
+
+.vehicle-detail p {
+  font-weight: 100;
+  margin-bottom: 5px;
+}
+
+.vehicle-detail p:last-child {
+  margin: 0;
+}
+
+.vehicle-detail strong {
+  text-decoration: underline;
+}
+
+.vehicle-detail img {
+  width: 100%;
+}
+
+#inv-display li img {
+  margin-inline: auto;
+  display: block;
+}
+
+#inv-display li a {
+  text-decoration: none;
+  color: #323232;
 }
 
 section h2 {
@@ -187,6 +251,10 @@ section li {
     width: 180px;
   }
 
+  #inv-display {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .sections {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -206,6 +274,14 @@ section li {
 
   .upgrades figcaption {
     font-size: 1.4rem;
+  }
+
+  .vehicle-detail {
+    max-width: 500px;
+  }
+
+  .vehicle-detail p {
+    font-size: 1.5rem;
   }
 }
 

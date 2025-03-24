@@ -49,7 +49,6 @@ Util.buildClassificationGrid = async function (data) {
         vehicle.inv_model +
         ' on CSE Motors" /></a>';
       grid += '<div class="namePrice">';
-      grid += "<hr />";
       grid += "<h2>";
       grid +=
         '<a href="../../inv/detail/' +

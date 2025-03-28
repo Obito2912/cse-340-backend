@@ -202,6 +202,40 @@ section li {
   -webkit-tap-highlight-color: transparent;
 }
 
+.login-form {
+  padding: 1em 2em;
+  width: 90%;
+  max-width: 500px;
+  border: 1px solid #004177;
+  margin: 0 auto 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.login-form input {
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+  min-height: 48px;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+.login-form button {
+  display: block;
+  margin: 0 auto 20px;
+  font-size: 1rem;
+  padding: .5em 2em;
+  border-radius: 10px;
+}
+
+.signup-link {
+  font-size: 1.2rem;
+  color: #323232;
+  text-align: center;
+  display: block;
+}
+
 @media screen and (min-width: 64rem) {
   html {
     background-image: url(/images/site/small_check.jpg);
@@ -282,6 +316,10 @@ section li {
 
   .vehicle-detail p {
     font-size: 1.5rem;
+  }
+  
+  .login-form button {
+    cursor: pointer;
   }
 }
 

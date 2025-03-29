@@ -1,0 +1,25 @@
+<h1>
+    <%= title %>
+</h1>
+
+<form action="/account/register" method="POST" class="login-form">
+    <label for="account_firstname">First Name:</label>
+    <input type="text" name="account_firstname" id="account_firstname" required>
+
+    <label for="account_lastname">Last Name:</label>
+    <input type="text" name="account_lastname" id="account_lastname" required>
+
+    <label for="account_email">Email:</label>
+    <input type="email" name="account_email" id="account_email" required>
+
+    <label for="account_password">Password:</label>
+    <span class="pass-rqmt">
+        It needs to be at least 12 characters long and has at least 1 uppercase character, 1 number, and 1 special
+        character
+    </span>
+    <input type="password" name="account_password" id="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+    <span id="passwdBtn">Show Password</span>
+
+    <button type="submit">Register</button>
+
+</form>

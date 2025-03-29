@@ -236,6 +236,34 @@ section li {
   display: block;
 }
 
+#passwdBtn {
+  cursor: default;
+  border: 1px solid #004177;
+  border-radius: 5px;
+  padding: .2em;
+  display: inline-block;
+  transition: transform 0.1s ease;
+}
+
+#passwdBtn:active {
+  transform: scale(0.9);
+}
+
+.pass-rqmt {
+  margin-bottom: 10px;
+  display: block;
+  font-weight: 100;
+}
+
+input:required:invalid,
+input:focus:invalid {
+  /* insert your own styles for invalid form input */
+}
+
+input:required:valid {
+  /* insert your own styles for valid form input */
+}
+
 @media screen and (min-width: 64rem) {
   html {
     background-image: url(/images/site/small_check.jpg);
@@ -292,7 +320,7 @@ section li {
   .sections {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: 
+    grid-template-areas:
       "upgrades Reviews";
     gap: 15px;
   }
@@ -317,7 +345,7 @@ section li {
   .vehicle-detail p {
     font-size: 1.5rem;
   }
-  
+
   .login-form button {
     cursor: pointer;
   }

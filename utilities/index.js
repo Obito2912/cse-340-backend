@@ -85,18 +85,34 @@ Util.buildItemDetailView = function (item) {
     return '<p class="notice">Vehicle details not found.</p>';
   }
 
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+
+  const milesFormatter = new Intl.NumberFormat("en-US", {
+    maximumFractionDigits: 0
+  });
+
   let detailView = `
     <div class="vehicle-detail">
       <h1>${item.inv_make} ${item.inv_model}</h1>
-      <img src="${item.inv_image}" alt="Image of ${item.inv_make} ${item.inv_model}">
-      <p><strong>Price:</strong> $${new Intl.NumberFormat("en-US").format(item.inv_price)}</p>
-      <p><strong>Year:</strong> ${item.inv_year}</p>
-      <p><strong>Make:</strong> ${item.inv_make}</p>
-      <p><strong>Model:</strong> ${item.inv_model}</p>
-      <p><strong>Description:</strong> ${item.inv_description}</p>
+      <div>
+        <img src="${item.inv_image}" alt="Image of ${item.inv_make} ${item.inv_model}">
+      </div>
+      <div>
+        <p><strong>Price:</strong> $${formatter.format(item.inv_price)}</p>
+        <p><strong>Year:</strong> ${item.inv_year}</p>
+        <p><strong>Make:</strong> ${item.inv_make}</p>
+        <p><strong>Model:</strong> ${item.inv_model}</p>
+        <p><strong>Mileage:</strong> ${milesFormatter.format(item.inv_miles)}</p>
+        <p><strong>Description:</strong> ${item.inv_description}</p>
+      </div>
     </div>
   `;
-
+  console.log(item)
   return detailView;
 };
 

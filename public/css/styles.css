@@ -255,6 +255,36 @@ section li {
   font-weight: 100;
 }
 
+.info-message {
+  border-radius: 5px;
+  box-shadow: 0 0 10px #323232;
+  background-color: #004177;
+  padding: .5em;
+  margin: 0 auto 20px;
+  width: 90%;
+  max-width: 500px;
+  color: #fff;
+  font-weight: 100;
+  font-family:'Times New Roman', Times, serif;
+}
+
+.notice {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto 20px;
+  padding: .5em;
+  border-radius: 5px;
+  background-color: #004177;
+  font-family:'Times New Roman', Times, serif;
+  font-weight: 100;
+  box-shadow: 0 0 10px #323232;
+}
+
+.notice li {
+  list-style: none;
+  color: #fff;
+}
+
 input:required:invalid,
 input:focus:invalid {
   /* insert your own styles for invalid form input */
@@ -339,7 +369,26 @@ input:required:valid {
   }
 
   .vehicle-detail {
-    max-width: 500px;
+    display: grid;
+    max-width: 900px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 
+    "title title"
+    "first last"
+    ;
+    gap: 15px;
+  }
+
+  .vehicle-detail h1 {
+    grid-area: title;
+  }
+
+  .vehicle-detail div:first {
+    grid-area: first;
+  }
+
+  .vehicle-detail div:last-child {
+    grid-area: last;
   }
 
   .vehicle-detail p {

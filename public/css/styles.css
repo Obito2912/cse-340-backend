@@ -312,13 +312,15 @@ input:required:valid {
   font-size: 1.5rem;
 }
 
-.inventory-form {
+.inventory-form,
+.classification-form {
   width: 90%;
   max-width: 500px;
   margin: 0 auto 30px;
 }
 
 .inventory-form input,
+.classification-form input,
 .inventory-form textarea,
 .inventory-form select {
   display: block;
@@ -327,9 +329,22 @@ input:required:valid {
   min-height: 48px;
 }
 
+.classification-form input {
+  font-size: 1.2rem;
+  padding: .2em;
+}
+
+.classification-form label {
+  font-size: 1.2rem;
+}
+
+.classification-form button,
 .inventory-form button {
   padding: .5em 1em;
-  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #004177;
+  color: #fff;
 }
 
 @media screen and (min-width: 64rem) {
@@ -432,17 +447,16 @@ input:required:valid {
   .vehicle-detail p {
     font-size: 1.5rem;
   }
-
-  .login-form button {
-    cursor: pointer;
-  }
-
+  
   .inventory-form input,
-  .inventory-form select {
+  .inventory-form select,
+  .classification-form input {
     min-height: 30px;
   }
 
-  .inventory-form button {
+  .classification-form button,
+  .inventory-form button,
+  .login-form button {
     cursor: pointer;
   }
 }

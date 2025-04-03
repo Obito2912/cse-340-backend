@@ -88,8 +88,14 @@ validate.loginRules = () => {
 
     body("account_password")
       .trim()
-      .notEmpty()
-      .withMessage("Password cannot be empty.")
+      .isStrongPassword({
+        minLength: 12,
+        minLowercase: 1,
+        minUppercase: 1,
+        minNumbers: 1,
+        minSymbols: 1,
+      })
+      .withMessage("Password does not meet requirements."),
   ];
 };
 
@@ -99,14 +105,14 @@ validate.loginRules = () => {
   validate.checkLoginData = async (req, res, next) => {
     const { account_email } = req.body;
     const errors = validationResult(req);
-  
+    console.log('The errors:', errors.array());
     if (!errors.isEmpty()) {
       let nav = await utilities.getNav();
       res.render("account/login", {
         errors,
         title: "Login",
         nav,
-        // notice: null,
+        notice: null,
         account_email,
       });
       return;

@@ -120,7 +120,7 @@ invCont.buildEditInventoryView = async function(req, res, next) {
     nav,
     classificationList,
     errors: null,
-    item: itemData,
+    ...itemData, // 👈 this makes inv_id, inv_make, etc. available directly
     notice: req.flash("notice")
   });
 };
@@ -129,9 +129,9 @@ invCont.buildEditInventoryView = async function(req, res, next) {
  *  Build edit inventory view
  * ************************** */
 invCont.editInventoryView = async function (req, res, next) {
-  const invId = parseInt(req.params.invId)
+  const inv_id = parseInt(req.params.inv_id)
   let nav = await utilities.getNav()
-  const itemData = await invModel.getInventoryItemById(invId)
+  const itemData = await invModel.getInventoryItemById(inv_id)
   const classificationSelect = await utilities.buildClassificationList(itemData.classification_id)
   const itemName = `${itemData.inv_make} ${itemData.inv_model}`
   res.render("./inventory/edit-inventory", {
@@ -139,7 +139,7 @@ invCont.editInventoryView = async function (req, res, next) {
     nav,
     classificationSelect: classificationSelect,
     errors: null,
-    invId: itemData.invId,
+    inv_id: itemData.inv_id,
     inv_make: itemData.inv_make,
     inv_model: itemData.inv_model,
     inv_year: itemData.inv_year,
@@ -208,25 +208,20 @@ invCont.addInventory = async function (req, res) {
  *  Update Inventory Data
  * ************************** */
 invCont.updateInventory = async function (req, res, next) {
-  let nav = await utilities.getNav();
-
-  // Convert numeric fields explicitly
-  const inv_id = parseInt(req.body.inv_id, 10);
-  const inv_year = parseInt(req.body.inv_year, 10);
-  const inv_miles = parseInt(req.body.inv_miles, 10);
-  const classification_id = parseInt(req.body.classification_id, 10);
-  const inv_price = parseFloat(req.body.inv_price); // if price is a float
-
-  // Get the rest of the fields
+  let nav = await utilities.getNav()
   const {
+    inv_id,
     inv_make,
     inv_model,
     inv_description,
     inv_image,
     inv_thumbnail,
-    inv_color
-  } = req.body;
-
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color,
+    classification_id,
+  } = req.body
   const updateResult = await invModel.updateInventory(
     inv_id,  
     inv_make,
@@ -239,36 +234,36 @@ invCont.updateInventory = async function (req, res, next) {
     inv_miles,
     inv_color,
     classification_id
-  );
+  )
 
   if (updateResult) {
-    const itemName = updateResult.inv_make + " " + updateResult.inv_model;
-    req.flash("notice", `The ${itemName} was successfully updated.`);
-    res.redirect("/inv/");
+    const itemName = updateResult.inv_make + " " + updateResult.inv_model
+    req.flash("notice", `The ${itemName} was successfully updated.`)
+    res.redirect("/inv/")
   } else {
-    const classificationList = await utilities.buildClassificationList(classification_id);
-    const itemName = `${inv_make} ${inv_model}`;
-    req.flash("notice", "Sorry, the update failed.");
+    const classificationList = await utilities.buildClassificationList(classification_id)
+    const itemName = `${inv_make} ${inv_model}`
+    req.flash("notice", "Sorry, the insert failed.")
     res.status(501).render("inventory/edit-inventory", {
-      title: "Edit " + itemName,
-      nav,
-      classificationList,
-      errors: null,
-      inv_id,
-      inv_make,
-      inv_model,
-      inv_year,
-      inv_description,
-      inv_image,
-      inv_thumbnail,
-      inv_price,
-      inv_miles,
-      inv_color,
-      classification_id,
-      notice: req.flash("notice")
-    });
+    title: "Edit " + itemName,
+    nav,
+    classificationList,
+    errors: null,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id,
+    inv_id,
+    notice: req.flash("notice")
+    })
   }
-};
+}
 
 /* ***************************
  *  Return Inventory by Classification As JSON

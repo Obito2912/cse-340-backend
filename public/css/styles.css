@@ -313,7 +313,8 @@ input:required:valid {
 }
 
 .inventory-form,
-.classification-form {
+.classification-form,
+.manage_inventory {
   width: 90%;
   max-width: 500px;
   margin: 0 auto 30px;
@@ -345,6 +346,49 @@ input:required:valid {
   border: none;
   background-color: #004177;
   color: #fff;
+}
+
+.manage_inventory h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.manage_inventory p,
+.manage_inventory select {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  font-weight: 100;
+}
+
+#inventoryDisplay {
+  border-collapse: separate;
+  font-size: 1rem;
+  width: 100%;
+}
+
+/* Apply extra spacing *only* if the table has content */
+#inventoryDisplay:has(tbody tr) {
+  border: 1px solid #004177;
+  padding: 10px;
+  border-spacing: 0 10px;
+}
+
+#inventoryDisplay th {
+  font-size: 1.2rem;
+  color: #008cff;
+}
+
+#inventoryDisplay a {
+  color: #004177;
+  font-weight: bold;
+}
+
+#inventoryDisplay thead th {
+  border-bottom: 2px solid #004177; /* or whatever color fits your theme */
+}
+
+#inventoryDisplay td {
+  font-weight: 100;
 }
 
 @media screen and (min-width: 64rem) {

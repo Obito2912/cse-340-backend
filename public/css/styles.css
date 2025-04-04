@@ -314,7 +314,8 @@ input:required:valid {
 
 .inventory-form,
 .classification-form,
-.manage_inventory {
+.manage_inventory,
+.confirm-deletion {
   width: 90%;
   max-width: 500px;
   margin: 0 auto 30px;
@@ -389,6 +390,14 @@ input:required:valid {
 
 #inventoryDisplay td {
   font-weight: 100;
+}
+
+.confirm-deletion {
+  font-size: 1rem;
+  border: 2px solid #ff0000;
+  border-radius: 5px;
+  padding: .5em;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 @media screen and (min-width: 64rem) {

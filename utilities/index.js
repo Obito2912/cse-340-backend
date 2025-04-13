@@ -1,5 +1,5 @@
-const jwt = require("jsonwebtoken")
-require("dotenv").config()
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 const invModel = require("../models/inventory-model");
 const Util = {};
 
@@ -91,86 +91,109 @@ Util.buildItemDetailView = function (item) {
     style: "currency",
     currency: "USD",
     minimumFractionDigits: 2,
-    maximumFractionDigits: 2
+    maximumFractionDigits: 2,
   });
 
   const milesFormatter = new Intl.NumberFormat("en-US", {
-    maximumFractionDigits: 0
+    maximumFractionDigits: 0,
   });
 
   let detailView = `
     <div class="vehicle-detail">
       <h1>${item.inv_make} ${item.inv_model}</h1>
       <div>
-        <img src="${item.inv_image}" alt="Image of ${item.inv_make} ${item.inv_model}">
+        <img src="${item.inv_image}" alt="Image of ${item.inv_make} ${
+    item.inv_model
+  }">
       </div>
       <div>
         <p><strong>Price:</strong> $${formatter.format(item.inv_price)}</p>
         <p><strong>Year:</strong> ${item.inv_year}</p>
         <p><strong>Make:</strong> ${item.inv_make}</p>
         <p><strong>Model:</strong> ${item.inv_model}</p>
-        <p><strong>Mileage:</strong> ${milesFormatter.format(item.inv_miles)}</p>
+        <p><strong>Mileage:</strong> ${milesFormatter.format(
+          item.inv_miles
+        )}</p>
         <p><strong>Description:</strong> ${item.inv_description}</p>
       </div>
     </div>
   `;
-  console.log(item)
+  console.log(item);
   return detailView;
 };
 
 Util.buildClassificationList = async function (classification_id = null) {
-  let data = await invModel.getClassifications()
+  let data = await invModel.getClassifications();
   let classificationList =
-    '<select name="classification_id" id="classificationList" required>'
-  classificationList += "<option value=''>Choose a Classification</option>"
+    '<select name="classification_id" id="classificationList" required>';
+  classificationList += "<option value=''>Choose a Classification</option>";
   data.rows.forEach((row) => {
-    classificationList += '<option value="' + row.classification_id + '"'
+    classificationList += '<option value="' + row.classification_id + '"';
     if (
       classification_id != null &&
       row.classification_id == classification_id
     ) {
-      classificationList += " selected "
+      classificationList += " selected ";
     }
-    classificationList += ">" + row.classification_name + "</option>"
-  })
-  classificationList += "</select>"
-  return classificationList
-}
+    classificationList += ">" + row.classification_name + "</option>";
+  });
+  classificationList += "</select>";
+  return classificationList;
+};
 
 /* ****************************************
-* Middleware to check token validity
-**************************************** */
+ * Middleware to check token validity
+ **************************************** */
 Util.checkJWTToken = (req, res, next) => {
   if (req.cookies.jwt) {
-   jwt.verify(
-    req.cookies.jwt,
-    process.env.ACCESS_TOKEN_SECRET,
-    function (err, accountData) {
-     if (err) {
-      req.flash("Please log in")
-      res.clearCookie("jwt")
-      return res.redirect("/account/login")
-     }
-     res.locals.accountData = accountData
-     res.locals.loggedin = 1
-     next()
-    })
+    jwt.verify(
+      req.cookies.jwt,
+      process.env.ACCESS_TOKEN_SECRET,
+      function (err, accountData) {
+        if (err) {
+          req.flash("Please log in");
+          res.clearCookie("jwt");
+          return res.redirect("/account/login");
+        }
+        res.locals.accountData = accountData;
+        res.locals.loggedin = 1;
+        next();
+      }
+    );
   } else {
-   next()
+    next();
   }
- }
+};
 
 /* ****************************************
  *  Check Login
  * ************************************ */
 Util.checkLogin = (req, res, next) => {
   if (res.locals.loggedin) {
-    next()
+    next();
   } else {
-    req.flash("notice", "Please log in.")
-    return res.redirect("/account/login")
+    req.flash("notice", "Please log in.");
+    return res.redirect("/account/login");
   }
- }
+};
+
+/* ****************************************
+ *  Middleware: Restrict access to Employees/Admins only
+ * ************************************ */
+Util.requireEmployeeOrAdmin = (req, res, next) => {
+  const account = res.locals.accountData;
+  if (
+    !account ||
+    (account.account_type !== "Employee" && account.account_type !== "Admin")
+  ) {
+    req.flash(
+      "notice",
+      "You must be logged in as an employee or admin to access that page."
+    );
+    return res.redirect("/account/login");
+  }
+  next();
+};
 
 /* ****************************************
  * Middleware For Handling Errors

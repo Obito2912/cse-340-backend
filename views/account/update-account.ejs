@@ -18,71 +18,70 @@
      ACCOUNT INFORMATION UPDATE
 ============================= -->
 <section class="form-section">
-    <section class="form-section">
-        <h2>Update Account Information</h2>
-        <form action="/account/update-info" method="post" class="update-form">
-          <!-- Hidden field with account ID -->
-          <input type="hidden" name="account_id" value="<%= accountId %>">
-      
-          <!-- First Name -->
-          <label for="account_firstname">First Name:</label>
-          <input
-            type="text"
-            id="account_firstname"
-            name="account_firstname"
-            required
-            value="<%= locals.account_firstname || accountData?.account_firstname || '' %>">
-      
-          <!-- Last Name -->
-          <label for="account_lastname">Last Name:</label>
-          <input
-            type="text"
-            id="account_lastname"
-            name="account_lastname"
-            required
-            value="<%= locals.account_lastname || accountData?.account_lastname || '' %>">
-      
-          <!-- Email -->
-          <label for="account_email">Email:</label>
-          <input
-            type="email"
-            id="account_email"
-            name="account_email"
-            required
-            value="<%= locals.account_email || accountData?.account_email || '' %>">
-      
-          <!-- Submit -->
-          <button type="submit">Update Info</button>
-        </form>
-      </section>
+  <h2>Update Account Information</h2>
+  <form action="/account/update-info" method="post" class="update-form">
+    <!-- Hidden field with account ID -->
+    <input type="hidden" name="account_id" value="<%= accountId %>">
+
+    <!-- First Name -->
+    <label for="account_firstname">First Name:</label>
+    <input
+      type="text"
+      id="account_firstname"
+      name="account_firstname"
+      required
+      value="<%= locals.account_firstname || accountData?.account_firstname || '' %>">
+
+    <!-- Last Name -->
+    <label for="account_lastname">Last Name:</label>
+    <input
+      type="text"
+      id="account_lastname"
+      name="account_lastname"
+      required
+      value="<%= locals.account_lastname || accountData?.account_lastname || '' %>">
+
+    <!-- Email -->
+    <label for="account_email">Email:</label>
+    <input
+      type="email"
+      id="account_email"
+      name="account_email"
+      required
+      value="<%= locals.account_email || accountData?.account_email || '' %>">
+
+    <!-- Submit -->
+    <button type="submit">Update Info</button>
+  </form>
+</section>
 
 <!-- ==========================
      PASSWORD CHANGE SECTION
 ============================= -->
 <section class="form-section">
-    <h2>Change Password</h2>
-  
-    <!-- Instructional Text -->
-    <p class="pass-rqmt">
-      To change your password, enter a new one below. It must be at least 12 characters long, 
-      including 1 uppercase letter, 1 number, and 1 special character.
-    </p>
-  
-    <form action="/account/update-password" method="post" class="update-form">
-      <!-- Hidden field with account ID -->
-      <input type="hidden" name="account_id" value="<%= accountId %>">
-  
-      <!-- New Password Field -->
-      <label for="account_password">New Password:</label>
-      <input
-        type="password"
-        id="account_password"
-        name="account_password"
-        required
-        pattern="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\\s).{12,}$">
-  
-      <!-- Submit -->
-      <button type="submit">Change Password</button>
-    </form>
-  </section>
+  <h2>Change Password</h2>
+
+  <!-- Instructional Text -->
+  <p class="pass-rqmt">
+    To change your password, enter a new one below. It must be at least 12 characters long, 
+    including 1 uppercase letter, 1 number, and 1 special character.
+  </p>
+
+  <form action="/account/update-password" method="post" class="update-form">
+    <!-- Hidden field with account ID -->
+    <input type="hidden" name="account_id" value="<%= accountId %>">
+
+    <!-- New Password Field -->
+    <label for="account_password">New Password:</label>
+    <input
+      type="password"
+      id="account_password"
+      name="account_password"
+      required
+      pattern="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\\s).{12,}$">
+
+    <!-- Submit -->
+    <button type="submit">Change Password</button>
+  </form>
+</section>
   

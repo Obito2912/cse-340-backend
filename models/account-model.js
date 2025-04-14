@@ -60,7 +60,7 @@ async function getAccountById(account_id) {
   }
 }
 
-async function updateAccount(account_id, firstname, lastname, email) {
+async function updateAccount(firstname, lastname, email, account_id) {
   try {
     const sql = `
       UPDATE account
@@ -75,6 +75,7 @@ async function updateAccount(account_id, firstname, lastname, email) {
     return error.message;
   }
 }
+
 
 /* *****************************
 * Update Password

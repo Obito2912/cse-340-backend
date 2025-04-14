@@ -65,10 +65,10 @@ async function updateAccountInfo(req, res) {
     req.body;
 
   const result = await accountModel.updateAccount(
-    account_id,
     account_firstname,
     account_lastname,
-    account_email
+    account_email,
+    account_id
   );
 
   if (result) {

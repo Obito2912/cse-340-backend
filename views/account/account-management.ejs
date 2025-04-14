@@ -4,14 +4,16 @@
   <div class="info-message"><p><%= notice[0] %></p></div>
 <% } %>
 
-<% if (locals.accountData) { %>
-  <h2>Welcome <%= accountData.account_firstname %></h2>
-
-  <!-- Update Account Link -->
-  <p><a href="/account/update/<%= accountData.account_id %>">Update Account Information</a></p>
-
-  <% if (accountData.account_type === "Employee" || accountData.account_type === "Admin") { %>
-    <h3>Inventory Management</h3>
-    <p><a href="/inv">Go to Inventory Management</a></p>
+<div class="mnagmt-view_container">
+  <% if (locals.accountData) { %>
+    <h2>Welcome <%= accountData.account_firstname %></h2>
+  
+    <!-- Update Account Link -->
+    <p><a href="/account/update/<%= accountData.account_id %>">Update Account Information</a></p>
+  
+    <% if (accountData.account_type === "Employee" || accountData.account_type === "Admin") { %>
+      <h3>Inventory Management</h3>
+      <p><a href="/inv">Go to Inventory Management</a></p>
+    <% } %>
   <% } %>
-<% } %>
+</div>

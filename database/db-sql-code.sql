@@ -43,6 +43,14 @@ CREATE TABLE IF NOT EXISTS public.account (
   CONSTRAINT account_pkey PRIMARY KEY (account_id)
 );
 
+-- Table structure for table `contact_messages`
+CREATE TABLE IF NOT EXISTS public.contact_messages (
+  contact_id SERIAL PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  email VARCHAR NOT NULL,
+  message TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 -- Data for table `classification`
 INSERT INTO public.classification (classification_name)

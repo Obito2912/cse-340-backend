@@ -19,6 +19,7 @@ const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
 const errorRoute = require("./routes/errorRoute")
 const cookieParser = require("cookie-parser")
+const contactRoute = require("./routes/contactRoute");
 
 /* ***********************
  * Middleware
@@ -63,8 +64,12 @@ app.get('/', utilities.handleErrors(baseController.buildHome))
 app.use("/inv", inventoryRoute)
 // Account Route
 app.use("/account", accountRoute);
+// Contact Route
+app.use("/contact", contactRoute);
 // Error Route
 app.use("/error", errorRoute);
+
+
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})

@@ -10,6 +10,7 @@ async function buildContactForm(req, res) {
     name: "",
     email: "",
     message: "",
+    notice: null,
   });
 }
 
@@ -31,6 +32,7 @@ async function handleContactSubmission(req, res) {
       name,
       email,
       message,
+      notice: ['Message failed to send.']
     });
   }
 }

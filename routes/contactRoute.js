@@ -27,6 +27,7 @@ router.post(
         name,
         email,
         message,
+        notice: null,
       });
     }
     next();
